@@ -1,0 +1,54 @@
+# Drama Script 0.1
+
+# Actions:
+# dialogue <character_name> <avatar_name> <content>
+# float <variable_name> <operation> <attribute>
+# int <variable_name> <operation> <attribute>
+# bool <variable_name> <operation> <attribute>
+# string <variable_name> <operation> <attribute>
+# 
+# Conditions:
+# <valueA> <comparation> <valueB>
+#
+# if <condition>
+#    <action>
+#    <action>
+#    ...
+# else
+#    <action>
+#    <action>
+#    ...
+# endif
+#
+# condition == != > < && || not 
+# int/float + - * / set
+# 
+# loop 10
+#    <action>
+#    <action>
+#    ...
+# endloop
+#
+# loop while <condition>
+#    <action>
+#    <action>
+#    if <condition>
+#         break
+#    ...
+# endloop
+
+
+dialogue "xvrsl" "xvrsl" "Hello World!"
+if "true"
+    dialogue "" "" "True"
+else
+    dialogue "" "" "False"
+endif
+
+if "money" largerThan 1
+    dialogue "" "" "You are rich!"
+endif
+
+if "money" largerThan &"peters_money"
+    dialogue "" "" "You are richer than peter!"
+endif

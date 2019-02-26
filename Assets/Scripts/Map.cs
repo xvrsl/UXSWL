@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+[System.Serializable]
 public class Map
 {
+    [XmlArray("Sites")]
+    [XmlArrayItem("Site")]
     public List<Site> sites;
+    [XmlArray("RouteMaps")]
+    [XmlArrayItem("RouteMap")]
     public List<RouteMap> RouteMaps;
+    [XmlIgnore]
     public Dictionary<string, Site> siteIdDictionary;
     public void Initialize()
     {
@@ -50,16 +58,39 @@ public class Map
             siteIdDictionary.Remove(site.id);
         }
     }
+
+    public void Save(string path)
+    {
+        var serializer = new XmlSerializer(typeof(Map));
+        using(var stream = new FileStream(path, FileMode.Create))
+        {
+            serializer.Serialize(stream, this);
+        }
+    }
+    public static Map Load(string path)
+    {
+        var serializer = new XmlSerializer(typeof(Map));
+        using(var stream = new FileStream(path, FileMode.Open))
+        {
+            return serializer.Deserialize(stream) as Map;
+        }
+    }
 }
 
 [System.Serializable]
 public class Site
 {
+    [XmlAttribute("id")]
     public string id;
+    [XmlAttribute("name")]
     public string name;
     public string discription;
     public Vector3 position;
 
+    public Site()
+    {
+
+    }
     public Site(string id, string name, string discription, Vector3 position)
     {
         this.id = id;
@@ -72,11 +103,15 @@ public class Site
 [System.Serializable]
 public class Route
 {
+    [XmlAttribute("name")]
     public string name;
     public string discription;
     public string from;
     public string to;
+    public Route()
+    {
 
+    }
     public Route(string from, string to)
     {
         this.from = from;
@@ -96,8 +131,11 @@ public class Route
 [System.Serializable]
 public class RouteMap
 {
+    [XmlAttribute("name")]
     public string name;
     public string discription;
+    [XmlArray("Routes")]
+    [XmlArrayItem("Route")]
     public List<Route> routes;
 
     public Route GetRoute(string from, string to)

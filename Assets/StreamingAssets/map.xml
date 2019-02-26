@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Sites>
+    <Site id="shenyang" name="Shen Yang">
+      <discription>A lonely city</discription>
+      <position>
+        <x>0</x>
+        <y>5</y>
+        <z>0</z>
+      </position>
+    </Site>
+    <Site id="shanghai" name="Shang Hai">
+      <discription>A magic city</discription>
+      <position>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+      </position>
+    </Site>
+    <Site id="guangzhou" name="Guang Zhou">
+      <discription>A eating city</discription>
+      <position>
+        <x>0</x>
+        <y>-5</y>
+        <z>0</z>
+      </position>
+    </Site>
+  </Sites>
+  <RouteMaps>
+    <RouteMap name="Train">
+      <discription>Produced by China Rail Company</discription>
+      <Routes>
+        <Route name="ShenShangLine">
+          <discription>Shenyang to Shanghai</discription>
+          <from>shenyang</from>
+          <to>shanghai</to>
+        </Route>
+        <Route name="ShangGuangLine">
+          <discription>ShangHai to GuangZhou</discription>
+          <from>shanghai</from>
+          <to>guangzhou</to>
+        </Route>
+        <Route name="GuangShenLine">
+          <discription>Guangzhou to Shenyang</discription>
+          <from>guangzhou</from>
+          <to>shenyang</to>
+        </Route>
+      </Routes>
+    </RouteMap>
+    <RouteMap name="Portal">
+      <discription>Produced by Apeture Science</discription>
+      <Routes>
+        <Route name="The Grand Portal">
+          <discription>That grand portal which is very grand.</discription>
+          <from>shanghai</from>
+          <to>shenyang</to>
+        </Route>
+      </Routes>
+    </RouteMap>
+  </RouteMaps>
+</Map>
